@@ -117,7 +117,7 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
-  return arr.reduce((a,b) => a.concat([b.name]), []);
+  return arr.reduce((a,b) => [...a, b.name], []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,6 +134,7 @@ const reversedString = (str) => {
     .split('')
     .reduce((a,b) => b + a, '');
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -288,7 +289,7 @@ Write a function named extractChildren that, given the array of characters from 
 const extractChildren = (arr) => {
   // Solution code here...
   return arr
-    .filter(character => character.name.match(/a/))
+    .filter(character => /a/.test(character.name))
     .reduce((a,b) => a.concat(b.children || []), []);
 };
 

@@ -177,7 +177,7 @@ const characters = [
 
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
-  return arr.filter(v => !Object.keys(v).includes('children') );
+  return arr.filter(v => v.children === undefined );
 };
 
 /* ------------------------------------------------------------------------------------------------
