@@ -245,8 +245,9 @@ For example, removeVowels('gregor') returns 'grgr'.
 
 const removeVowels = (str) => {
   // Solution code here...
-  // const vowels = new RegExp(/[aeiou]/, 'g');
-  return str.replaceAll(/[aeiou]/g, '');
+  const strArr = str.split('');
+  // return str.replaceAll(/[aeiou]/g, '');
+  return strArr.reduce((a,b) => /[aeiou]/i.test(b) ? a : a + b, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
