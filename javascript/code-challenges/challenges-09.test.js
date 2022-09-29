@@ -10,6 +10,7 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  return arr.reduce((a,b) => b > a ? b : a );
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +27,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,6 +40,7 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
+  return Object.values(obj).includes(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,6 +64,7 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
+  return Object.entries(obj).map(v => `${v[0]}: ${v[1]}`);
 };
 
 
@@ -117,6 +121,7 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+  arr.forEach(v => houses.push(v.house));
   return houses;
 };
 
@@ -134,7 +139,8 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-
+  const obj = arr.find(v => v.name === character);
+  return Object.values(obj).length === 4;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -147,6 +153,10 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+  const obj = arr.find(v => v.name === character);
+  if (!obj) { return false; }
+  console.log(obj);
+  return Object.entries(obj)[2][0] === 'children';
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,6 +167,18 @@ Write a function named totalCharacters that takes in an array and returns the nu
 
 const totalCharacters = (arr) => {
   // Solution code here...
+  const newArr = arr.reduce((a,b) => {
+    const spouse = b?.spouse || [];
+    const children = b?.children || [];
+    // console.log(a);
+    // console.log(children);
+
+    return a.concat(b.name)
+      .concat(spouse)
+      .concat(...(children))
+  }, new Array());
+  // console.log(newArr);
+  return newArr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -172,6 +194,11 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
+  arr.forEach(v => {
+    const spouse = v.spouse ? 1 : 0;
+    const children = v?.children ? v.children.length : 0;
+    sizes.push({house: v.house, members: spouse + children + 1})
+  });
   return sizes;
 };
 
@@ -196,6 +223,12 @@ const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 const houseSurvivors = (arr) => {
   const survivors = [];
   // Solution code here...
+  arr.forEach(v => {
+    const spouse = v.spouse ? (deceasedSpouses.includes(v.spouse) ? 0 : 1) : 0;
+    const children = v?.children ? v.children.length : 0;
+    console.log(spouse, children);
+    survivors.push({house: v.house, members: spouse + children + 1});
+  });
   return survivors;
 };
 
@@ -265,7 +298,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
   });
@@ -275,20 +308,20 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return the number of characters in the array', () => {
     expect(totalCharacters(characters)).toStrictEqual(27);
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return an object for each house containing the name and size', () => {
     expect(houseSize(characters)[1]).toStrictEqual({ house: 'Arryn', members: 3 });
     expect(houseSize(characters).length).toStrictEqual(7);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should not include any deceased spouses', () => {
     expect(houseSurvivors(characters)[2]).toStrictEqual({ house: 'Lannister', members: 4 });
   });
