@@ -188,7 +188,6 @@ let lowestWeeklyTemperatureData = [
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
 
