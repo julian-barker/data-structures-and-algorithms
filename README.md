@@ -23,3 +23,4 @@ To run your tests
 #### Table of Contents
 
 - [Challenge 01](./array-reverse/README.md)
+- [Challenge 02](./array-insert-shift/README.md)
