@@ -155,7 +155,6 @@ const hasChildrenEntries = (arr, character) => {
   // Solution code here...
   const obj = arr.find(v => v.name === character);
   if (!obj) { return false; }
-  console.log(obj);
   return Object.entries(obj)[2][0] === 'children';
 };
 
@@ -170,14 +169,11 @@ const totalCharacters = (arr) => {
   const newArr = arr.reduce((a,b) => {
     const spouse = b?.spouse || [];
     const children = b?.children || [];
-    // console.log(a);
-    // console.log(children);
 
     return a.concat(b.name)
       .concat(spouse)
       .concat(...(children))
   }, new Array());
-  // console.log(newArr);
   return newArr.length;
 };
 
