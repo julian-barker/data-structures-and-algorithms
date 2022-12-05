@@ -12,4 +12,5 @@
 
 ## Solution
 
-You can run the tests by running `npm test linked-list`
+- All of the implementation code exists in index.js
+- You can run the tests by running `npm test linked-list`
