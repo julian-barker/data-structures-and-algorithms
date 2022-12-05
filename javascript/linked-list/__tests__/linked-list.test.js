@@ -43,6 +43,13 @@ describe('Linked List', () => {
     expect(list.head.next.val).toEqual(3);
   });
 
+  it('handles unfound value on insertBefore', () => {
+    let list = new LinkedList();
+    list.append(3);
+    list.append(1);
+    expect(() => list.insertBefore(2, 7)).toThrow('ERROR: no node exists with the given value');
+  });
+
   it('handles insertion after index', () => {
     let list = new LinkedList();
     list.append(3);
@@ -59,6 +66,14 @@ describe('Linked List', () => {
     list.insertAfter(1, 7);
     expect(list.head.next.val).toEqual(1);
     expect(list.head.next.next.val).toEqual(7);
+  });
+
+  it('handles unfound value on insertAfter', () => {
+    let list = new LinkedList();
+    list.append(3);
+    list.append(1);
+    list.insertAfter(1, 7);
+    expect(() => list.insertAfter(2, 7)).toThrow('ERROR: no node exists with the given value');
   });
 
   it('points to the first node as "head"', () => {
