@@ -12,7 +12,7 @@ class LinkedList {
     this.head = null;
   }
 
-  insert(value) {
+  append(value) {
     let node = new Node(value);
     if (this.head === null) {
       this.head = node;
@@ -23,6 +23,43 @@ class LinkedList {
       curr = curr.next;
     }
     curr.next = node;
+  }
+
+  insertBefore(val, newVal) {
+    if(!this.head) {
+      throw 'ERROR: empty list - use the append method instead';
+    }
+    if(this.head.val === val) {
+      let node = new Node(newVal, this.head);
+      this.head = node;
+      return;
+    }
+    let curr = this.head;
+    while(curr.next) {
+      if(curr.next.val === val) {
+        let node = new Node(newVal, curr.next);
+        curr.next = node;
+        return;
+      }
+      curr = curr.next;
+    }
+    throw 'ERROR: no node exists with the given value';
+  }
+
+  insertAfter(val, newVal) {
+    if(!this.head) {
+      throw 'ERROR: empty list - use the append method instead';
+    }
+    let curr = this.head;
+    while(curr) {
+      if(curr.val === val) {
+        let node = new Node(newVal, curr.next);
+        curr.next = node;
+        return;
+      }
+      curr = curr.next;
+    }
+    throw 'ERROR: no node exists with the given value';
   }
 
   includes(key) {
