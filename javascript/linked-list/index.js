@@ -62,6 +62,63 @@ class LinkedList {
     throw 'ERROR: no node exists with the given value';
   }
 
+  findAtIndex(idx) {
+    let curr = this.head;
+    let count = 0;
+    while (curr) {
+      console.log(`count = ${count}`, `idx = ${idx}`, `val = ${curr}`);
+      if (count === idx) {
+        return curr.val;
+      }
+      count++;
+    }
+    throw 'ERROR: provided index does not exist in list';
+  }
+
+  findFromEnd(k) {
+    if (k < 0) {
+      throw 'ERROR: provided index does not exist in list';
+    }
+    let curr = this.head;
+    let len = 0;
+    while (curr) {
+      curr = curr.next;
+      len++;
+    }
+    let target = len - 1 - k;
+    console.log('k = ', k);
+    console.log('target = ', target);
+    if (target < 0) {
+      throw 'ERROR: provided index does not exist in list';
+    }
+    curr = this.head;
+    let count = 0;
+    while (curr) {
+      if (count === target) {
+        return curr.val;
+      }
+      curr = curr.next;
+      count++;
+    }
+    throw 'ERROR: provided index does not exist in list';
+  }
+
+  // findFromEnd(idx) {
+  //   let fast = this.head;
+  //   let slow = this.head;
+  //   let len = 0;
+  //   while (fast) {
+  //     if (count === target) {
+  //       return curr.val;
+  //     }
+  //     fast = fast.next;
+  //     if (fast % 2 === 0) {
+  //       slow = slow.next;
+  //     }
+  //   }
+  //   throw 'ERROR: provided index does not exist in list';
+  // }
+
   includes(key) {
     let curr = this.head;
     while (curr !== null) {

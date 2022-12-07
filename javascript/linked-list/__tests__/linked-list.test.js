@@ -98,6 +98,24 @@ describe('Linked List', () => {
     expect(list.includes(2)).toEqual(false);
   });
 
+  it('handles look up kth from end', () => {
+    let list = new LinkedList();
+    list.append(3);
+    list.append(1);
+    list.append(2);
+    list.append(13);
+    list.append(8);
+
+    let list2 = new LinkedList();
+    list2.append(5);
+
+    expect(list.findFromEnd(1)).toEqual(13);
+    expect(list.findFromEnd(0)).toEqual(8);
+    expect(list2.findFromEnd(0)).toEqual(5);
+    expect(() => list.findFromEnd(9)).toThrow('ERROR: provided index does not exist in list');
+    expect(() => list.findFromEnd(-1)).toThrow('ERROR: provided index does not exist in list');
+  });
+
   it('returns a string representation of the list', () => {
     let list = new LinkedList();
     list.append(3);
