@@ -1,7 +1,7 @@
 'use strict';
 
 // Require our linked list implementation
-const { LinkedList, Node } = require('../index');
+const { LinkedList, Node, zipLists } = require('../index');
 
 describe('Linked List', () => {
   it('handles instatiation', () => {
@@ -126,5 +126,41 @@ describe('Linked List', () => {
     let str = list.toString();
     console.log(str);
     expect(str).toEqual('{3} -> {1} -> {5} -> {hello} -> {last} -> NULL');
+  });
+
+
+  it('zips two lists together', () => {
+    let list1 = new LinkedList();
+    let list2 = new LinkedList();
+    let list3 = new LinkedList();
+    let list4 = new LinkedList();
+    let list5 = new LinkedList();
+    let list6 = new LinkedList();
+
+    list1.append(2);
+    list1.append(4);
+    list1.append(5);
+
+    list2.append(3);
+    list2.append(1);
+    list2.append(8);
+
+    list3.append(2);
+    list3.append(4);
+    list3.append(5);
+
+    let str1 = list1.toString();
+    let str2 = list2.toString();
+    let str3 = zipLists(list1, list2).toString();
+    let str4 = zipLists(list3, list4).toString();
+    let str5 = zipLists(list5, list6).toString();
+
+    console.log('----- list 1: ', str1);
+    console.log('----- list 2: ', str2);
+    console.log('----- result: ', str3);
+
+    expect(str3).toEqual('{2} -> {3} -> {4} -> {1} -> {5} -> {8} -> NULL');
+    expect(str4).toEqual('{2} -> {4} -> {5} -> NULL');
+    expect(str5).toEqual('NULL');
   });
 });

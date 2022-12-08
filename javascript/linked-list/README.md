@@ -4,7 +4,9 @@
 
 ## Whiteboard Process
 
-- No whiteboard for this lab
+### Challenge 8 (zip)
+
+![linked-list-zip](./assets/linked-list-zip.png)
 
 ## Approach & Efficiency
 
