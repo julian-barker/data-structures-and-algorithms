@@ -18,7 +18,7 @@ class Stack {
 
   pop() {
     if (this.top === null) {
-      throw 'ERROR: cannot pop from an empty list';
+      throw 'ERROR: Cannot pop from an empty Stack';
     }
     let popped = this.top;
     this.top = this.top.next;

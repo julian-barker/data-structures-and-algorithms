@@ -22,7 +22,7 @@ describe('Stack', () => {
   });
 
   test('handles pop from empty stack', () => {
-    expect(() => emptyStack.pop()).toThrow('ERROR: cannot pop from an empty list');
+    expect(() => emptyStack.pop()).toThrow('ERROR: Cannot pop from an empty Stack');
   });
 
   test('handles pop from non-empty stack', () => {
