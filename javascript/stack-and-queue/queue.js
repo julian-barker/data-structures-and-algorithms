@@ -1,16 +1,15 @@
 'use strict';
 
-const { LinkedList, Node } = require('./linked-list');
+const { Node } = require('./linked-list');
 
-class Queue extends LinkedList {
+class Queue {
   constructor() {
-    super();
     this.front = null;
     this.back = null;
   }
 
   isEmpty() {
-    return Boolean(this.front);
+    return !this.front;
   }
 
   enqueue(val) {

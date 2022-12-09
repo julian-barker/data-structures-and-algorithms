@@ -1,15 +1,14 @@
 'use strict';
 
-const { LinkedList, Node } = require('./linked-list');
+const { Node } = require('./linked-list');
 
-class Stack extends LinkedList {
+class Stack {
   constructor() {
-    super();
     this.top = null;
   }
 
   isEmpty() {
-    return Boolean(this.top);
+    return !this.top;
   }
 
   push(val) {
@@ -19,7 +18,7 @@ class Stack extends LinkedList {
 
   pop() {
     if (this.top === null) {
-      throw 'Error: cannot pop from an empty list';
+      throw 'ERROR: cannot pop from an empty list';
     }
     let popped = this.top;
     this.top = this.top.next;
