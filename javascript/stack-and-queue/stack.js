@@ -1,6 +1,6 @@
 'use strict';
 
-const { LinkedList, Node } = require('./');
+const { LinkedList, Node } = require('./linked-list');
 
 class Stack extends LinkedList {
   constructor() {
@@ -9,10 +9,7 @@ class Stack extends LinkedList {
   }
 
   isEmpty() {
-    if (this.top === null) {
-      return true;
-    }
-    return false;
+    return Boolean(this.top);
   }
 
   push(val) {
@@ -31,19 +28,9 @@ class Stack extends LinkedList {
   }
 
   peek() {
-    return this.top?.value;
+    return this.top ? this.top.val : null;
   }
 
 }
-
-let stack = new Stack();
-Stack.push(1);
-Stack.push(2);
-Stack.push(5);
-Stack.push(3);
-
-let emptyStack = new Stack();
-
-console.log(stack.peek(), emptyStack.peek());
 
 module.exports = { Stack, Node };
