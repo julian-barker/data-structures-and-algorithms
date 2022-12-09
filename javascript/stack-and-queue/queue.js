@@ -1,16 +1,15 @@
 'use strict';
 
-const { LinkedList, Node } = require('./linked-list');
+const { Node } = require('./linked-list');
 
-class Queue extends LinkedList {
+class Queue {
   constructor() {
-    super();
     this.front = null;
     this.back = null;
   }
 
   isEmpty() {
-    return Boolean(this.front);
+    return !this.front;
   }
 
   enqueue(val) {
@@ -21,16 +20,17 @@ class Queue extends LinkedList {
       return;
     }
     this.back.next = back;
+    this.back = this.back.next;
   }
 
   dequeue() {
     if(!this.front) {
-      throw 'ERROR: Cannot dequeue from empty Queue';
+      throw 'ERROR: Cannot dequeue from an empty Queue';
     }
     let front = this.front;
     this.front = this.front.next;
     front.next = null;
-    return front.val;
+    return front;
   }
 
   peek() {
