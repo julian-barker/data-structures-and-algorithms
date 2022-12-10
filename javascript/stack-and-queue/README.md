@@ -1,34 +1,37 @@
 # Challenge Summary
 
-- This challenge was to implement a singly linked list with methods for insertion and search.
+- This challenge was to implement a stack and a queue with the conventional methods:
+
+  - Stack: isEmpty, push, pop, peek
+  - Queue: isEmpty, enqueue, dequeue, peek
 
 ## Whiteboard Process
 
-### Challenge 8 (zip)
-
-![linked-list-zip](./assets/linked-list-zip.png)
+- No whiteboard for this challenge.
 
 ## Approach & Efficiency
 
-### Approach
+- For both stacks and queues, all operations will run in O(1) time and space since we only access or make changes at the point in the linked-list to which we have a direct reference. We just move pointers around at that the top (stack) or the front/back (queue).
 
-- The central mechanism for most implementation details is using a while loop to iterate through the nodes of the linked list until a certain criteria is met, or null is encountered. At that point, either return, throw an error, or perform some action.
-
-- For kth from the end, I simply iterated twice. The first iteration determines the length of the list, and the second iterates a counter until it reaches the target index, determined from the length - 1 - k.
-
-### Efficiency
+### Stack
 
 | Function | Time Complexity | Space Complexity |
 | --- | --- | --- |
-| append | O(n) | O(1) |
-| insertBefore | O(n) | O(1) |
-| insertAfter | O(n) | O(1) |
-| findAtIndex | O(n) | O(1) |
-| findFromEnd | O(n) | O(1) |
-| includes | O(n) | O(1) |
-| zipLists | O(n) | O(1) |
+| isEmpty | O(1) | O(1) |
+| push | O(1) | O(1) |
+| pop | O(1) | O(1) |
+| peek | O(1) | O(1) |
+
+### Queue
+
+| Function | Time Complexity | Space Complexity |
+| --- | --- | --- |
+| isEmpty | O(1) | O(1) |
+| enqueue | O(1) | O(1) |
+| dequeue | O(1) | O(1) |
+| peek | O(1) | O(1) |
 
 ## Solution
 
-- All of the implementation code exists in index.js
-- Run the tests by running `npm test linked-list`
+- All of the implementation code exists in stack.js and queue.js
+- Run the tests by running `npm test queue` or `npm test stack`
