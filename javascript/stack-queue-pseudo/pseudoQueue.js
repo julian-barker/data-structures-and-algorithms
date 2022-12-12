@@ -1,6 +1,6 @@
 'use strict';
 
-const { Stack, Node } = require('./linked-list');
+const { Stack, Node } = require('./stack');
 
 class Queue {
   constructor() {
@@ -15,28 +15,30 @@ class Queue {
   }
 
   enqueue(val) {
-    let back = new Node(val);
+    this.backward.push(val);
+    console.log(this.backward);
+    this.back = this.backward.top;
+    console.log(this.back);
 
-    this.backward.push(back);
-    this.back = this.backward.head;
 
     let forward = new Stack();
-    let curr = this.backward.head;
+    let curr = this.backward.top;
 
     while(curr) {
-      let newNode = new Node(curr.val);
-      forward.push(newNode);
+      forward.push(curr.val);
       curr = curr.next;
     }
 
     this.forward = forward;
-    this.front = this.forward.head;
+    this.front = this.forward.top;
   }
 
-  dequeue(val) {
-    let front = new Node(val);
+  dequeue() {
+    if(!this.front) {
+      throw 'ERROR: Cannot dequeue from an empty Queue';
+    }
 
-    this.forward.push(front);
+    const popped = this.forward.pop();
     this.front = this.forward.head;
 
     let backward = new Stack();
@@ -50,6 +52,8 @@ class Queue {
 
     this.backward = backward;
     this.back = this.backward.head;
+
+    return popped;
   }
 
   peek() {

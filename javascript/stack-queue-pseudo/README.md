@@ -1,9 +1,9 @@
 # Challenge Summary
 
-- This challenge was to implement a stack and a queue with the conventional methods:
-
-  - Stack: isEmpty, push, pop, peek
+- This challenge was to implement a pseudoQueue with the conventional methods:
   - Queue: isEmpty, enqueue, dequeue, peek
+
+- Using only two stacks, as opposed to a ground-up implementation.
 
 ## Whiteboard Process
 
@@ -11,7 +11,8 @@
 
 ## Approach & Efficiency
 
-- Each enqueue and dequeue on the queue performs a push in O(1) on either the forward or backward Stack, and then on O(n) operation to recreate the other Stack.
+- Each enqueue and dequeue on the queue performs a push in \*O(1) on either the forward or backward Stack, and then an \*O(n) operation to recreate the other Stack.  *time AND space
+- As far as I can figure, there isn't a way to keep all operations in constant time and space.
 
 ### Queue
 
@@ -24,5 +25,6 @@
 
 ## Solution
 
-- All of the implementation code exists in stack.js and queue.js
-- Run the tests by running `npm test queue` or `npm test stack`
+- All new implementation code exists in pseudoQueue.js.
+- Existing stack implementation brought over from the stack-and-queue lab
+- Run the tests by running `npm test pseudoQueue`

@@ -1,7 +1,7 @@
 'use strict';
 
 // Require our linked list implementation
-const { Queue, Node, Stack } = require('../');
+const { Queue, Node, Stack } = require('../pseudoQueue');
 
 const emptyQueue = new Queue();
 const queue = new Queue();
@@ -13,19 +13,16 @@ const node1 = new Node(1);
 const node2 = new Node(2, node1);
 const node3 = new Node(4, node2);
 const node4 = new Node(8, node3);
+forward.top = node4;
+queue.forward = forward;
+queue.front = forward.top;
 
 const node5 = new Node(8);
 const node6 = new Node(4, node5);
 const node7 = new Node(2, node6);
 const node8 = new Node(1, node7);
-
-forward.top = node4;
 backward.top = node8;
-
-queue.forward = forward;
 queue.backward = backward;
-
-queue.front = forward.top;
 queue.back = backward.top;
 
 describe('Queue', () => {
@@ -35,6 +32,11 @@ describe('Queue', () => {
     expect(emptyQueue.isEmpty()).toEqual(true);
   });
 
+  test('handles peek', () => {
+    let val = queue.peek();
+    expect(val).toEqual(8);
+  });
+
   test('handles dequeue from empty queue', () => {
     expect(() => emptyQueue.dequeue()).toThrow('ERROR: Cannot dequeue from an empty Queue');
   });
@@ -42,11 +44,6 @@ describe('Queue', () => {
   test('handles dequeue from non-empty queue', () => {
     const node = queue.dequeue();
     expect(node.val).toEqual(8);
-  });
-
-  test('handles peek', () => {
-    let val = queue.peek();
-    expect(val).toEqual(4);
   });
 
   test('handles enqueue onto empty queue', () => {
