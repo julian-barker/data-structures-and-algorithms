@@ -21,9 +21,9 @@
 ### Efficiency
 
 - Time: O(n) - iterate through all elements of the input
-- Space: O(n) - create a new stack of potentialy length n
+- Space: O(n) - create a new stack of potentially length n
 
 ## Solution
 
-- All of the implementation code exists in stack.js and queue.js
-- Run the tests by running `npm test queue` or `npm test stack`
+- All of the implementation code exists in index.js
+- Run the tests by running `npm test validate`
