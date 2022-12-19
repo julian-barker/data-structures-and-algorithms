@@ -5,7 +5,7 @@
 
 ## Whiteboard Process
 
-- No whiteboard for this challenge.
+- ![Lab-16](assets/tree-max.png)
 
 ## Approach & Efficiency
 
@@ -18,6 +18,7 @@
 - if the child is null, we insert a new node with the given value at that position
 - Note that for this, I assumed no duplicate values allowed and the given value does not already exist.
 - For contains, we return true if the given value and current node's value are equal, false if null, and return the value of the recursive call to the left or right child if less/greater than the current node's value
+- For findMax, we use a base case of node being null in our recursion and then return the max of the current node's value, and the return of the traverse function on its left and right children
 
 ### Queue
 
@@ -26,6 +27,7 @@
 | traversal | O(n) | O(n) |
 | add | O(h) | O(1) |
 | contains | O(h) | O(1) |
+| findMax | O(n) | O(1) |
 
 ## Solution
 

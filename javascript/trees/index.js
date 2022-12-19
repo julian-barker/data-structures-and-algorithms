@@ -43,7 +43,7 @@ class BinaryTree {
 
   postOrder() {
     let output = [];
-    let recurse = (node) => {
+    const recurse = (node) => {
       if(!node) {
         return;
       }
@@ -53,6 +53,18 @@ class BinaryTree {
     };
     recurse(this.root);
     return output;
+  }
+
+  findMax() {
+    const recurse = (node) => {
+      if(!node) {
+        return -Infinity;
+      }
+      const left = recurse(node.left);
+      const right = recurse(node.right);
+      return Math.max(node.val, left, right);
+    };
+    return recurse(this.root);
   }
 }
 

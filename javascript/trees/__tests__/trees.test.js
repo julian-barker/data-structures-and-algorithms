@@ -23,6 +23,11 @@ describe('Binary Tree works', () => {
     let arr = [3, 4, 2, 6, 7, 5, 1];
     expect(tree.postOrder()).toEqual(arr);
   });
+
+  test('binary tree handles findMax', () => {
+    expect(tree.findMax()).toEqual(7);
+  });
+
 });
 
 describe('Binary Search Tree works', () => {
