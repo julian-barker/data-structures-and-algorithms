@@ -56,6 +56,9 @@ class BinaryTree {
   }
 
   findMax() {
+    if(!this.root) {
+      return 'tree is empty';
+    }
     const recurse = (node) => {
       if(!node) {
         return -Infinity;
