@@ -6,6 +6,7 @@
 ## Whiteboard Process
 
 - ![Lab-16](assets/tree-max.png)
+- ![Lab-17](assets/tree-breadth-first.png)
 
 ## Approach & Efficiency
 
