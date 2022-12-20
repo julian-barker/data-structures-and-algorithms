@@ -19,6 +19,7 @@
 - Note that for this, I assumed no duplicate values allowed and the given value does not already exist.
 - For contains, we return true if the given value and current node's value are equal, false if null, and return the value of the recursive call to the left or right child if less/greater than the current node's value
 - For findMax, we use a base case of node being null in our recursion and then return the max of the current node's value, and the return of the traverse function on its left and right children
+- For BFS, we use a queue to store the children of every node as it is removed from the queue, allowing us to maintain a correct level-order traversal.  Since I used an array to represent my queue (for simplicity) the time complexity works out to be O(n^2), since `array.prototype.shift()` happens in O(n)
 
 ### Queue
 
@@ -28,6 +29,7 @@
 | add | O(h) | O(1) |
 | contains | O(h) | O(1) |
 | findMax | O(n) | O(1) |
+| bfs | O(n^2) | O(n) |
 
 ## Solution
 

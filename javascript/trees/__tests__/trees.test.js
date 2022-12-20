@@ -28,6 +28,11 @@ describe('Binary Tree works', () => {
     expect(tree.findMax()).toEqual(7);
   });
 
+  test('binary tree handles breadth-first search', () => {
+    let arr = [1, 2, 5, 3, 4, 6, 7];
+    expect(tree.bfs()).toEqual(arr);
+  });
+
 });
 
 describe('Binary Search Tree works', () => {
