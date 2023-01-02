@@ -8,7 +8,7 @@ Insertion sort is a simple sorting algorithm that iteratively inserts elements o
 
 The below pseudocode demonstrates the implementation of this algorithm.
 
-![insertion-pseudo](../images/insertion-sort.png)
+![insertion-pseudo](./images/insertion-sort.png)
 
 ### Walkthrough
 
