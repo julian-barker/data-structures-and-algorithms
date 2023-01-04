@@ -9,3 +9,7 @@ Write two comparator functions to pass into the native `Array.prototype.sort()` 
 - The first function should sort by the release year
 - The second function should sort by the title
   - Note that the function should ignore leading articles such as 'The', 'A', and 'An'
+
+### Testing
+
+Run `npm test comparator`
