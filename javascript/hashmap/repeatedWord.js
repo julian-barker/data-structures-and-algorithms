@@ -1,6 +1,5 @@
-'use strict';
 
-const HashMap = require('./hashmap');
+const HashMap = require('.');
 
 function repeatedWord(str) {
   const map = new HashMap();

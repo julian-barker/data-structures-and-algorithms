@@ -30,7 +30,7 @@ class HashMap {
   }
 
   has(key) {
-    if(this.get(key) === undefined) {
+    if(this.get(key) !== undefined) {
       return false;
     }
     return true;
