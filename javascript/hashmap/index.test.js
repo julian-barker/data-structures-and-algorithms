@@ -1,6 +1,7 @@
 const HashMap = require('.');
 const treeIntersection = require('./treeIntersection');
 const repeatedWord = require('./repeatedWord');
+const leftJoin = require('./leftJoin');
 
 describe('Hashmap', () => {
   it('can set and get a value', () => {
@@ -118,7 +119,7 @@ describe('treeIntersection', () => {
         },
       },
     };
-    expect(treeIntersection(tree1, tree2)).toEqual([100, 160, 200, 350]);
+    expect(treeIntersection(tree1, tree2)).toEqual([100, 150, 160, 200, 350]);
   });
 
   it('returns an empty array if there are no matching values', () => {
@@ -236,4 +237,62 @@ describe('treeIntersection', () => {
     };
     expect(treeIntersection(tree1, tree2)).toEqual([]);
   });
+});
+
+describe('leftJoin()', () => {
+  it('returns an array of arrays', () => {
+    const map1 = new HashMap();
+    map1.set('fond', 'enamored');
+    map1.set('wrath', 'anger');
+    map1.set('diligent', 'employed');
+    map1.set('outfit', 'garb');
+    map1.set('guide', 'usher');
+
+    const map2 = new HashMap();
+    map2.set('fond', 'averse');
+    map2.set('wrath', 'delight');
+    map2.set('diligent', 'idle');
+    map2.set('flow', 'jam');
+    map2.set('guide', 'follow');
+
+    expect(leftJoin(map1, map2)).toEqual([
+      ['fond', 'enamored', 'averse'],
+      ['wrath', 'anger', 'delight'],
+      ['diligent', 'employed', 'idle'],
+      ['outfit', 'garb', null],
+      ['guide', 'usher', 'follow'],
+    ]);
+  });
+
+  it('returns an empty array if the left map is empty', () => {
+    const map1 = new HashMap();
+    const map2 = new HashMap();
+    map2.set('fond', 'averse');
+    map2.set('wrath', 'delight');
+    map2.set('diligent', 'idle');
+    map2.set('flow', 'jam');
+    map2.set('guide', 'follow');
+
+    expect(leftJoin(map1, map2)).toEqual([]);
+  });
+
+  it('returns all null values in the right column if the right map is empty', () => {
+    const map1 = new HashMap();
+    map1.set('fond', 'enamored');
+    map1.set('wrath', 'anger');
+    map1.set('diligent', 'employed');
+    map1.set('outfit', 'garb');
+    map1.set('guide', 'usher');
+
+    const map2 = new HashMap();
+
+    expect(leftJoin(map1, map2)).toEqual([
+      ['fond', 'enamored', null],
+      ['wrath', 'anger', null],
+      ['diligent', 'employed', null],
+      ['outfit', 'garb', null],
+      ['guide', 'usher', null],
+    ]);
+  });
+
 });

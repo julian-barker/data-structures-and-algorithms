@@ -25,6 +25,12 @@ Write a function that uses a hashmap to return a list of repeated values between
 
 ![Whiteboard](./assets/challenge-32.png)
 
+#### Challenge 33
+
+Write a function that takes two hashmaps and returns a LEFT JOIN of the two maps
+
+![Whiteboard](./assets/challenge-33.png)
+
 ### Testing
 
 - `npm test hashmap`
