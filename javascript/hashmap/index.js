@@ -31,18 +31,21 @@ class HashMap {
 
   has(key) {
     if(this.get(key) !== undefined) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   keys() {
+    if(this.table.length === 0) {
+      return [];
+    }
     const keys = this.table.reduce((acc, bucket) => {
       if(bucket) {
         return acc.concat(Object.keys(bucket));
       }
       return acc;
-    });
+    }, []);
     return keys;
   }
 
